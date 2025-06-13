@@ -9,7 +9,7 @@ replicaCount: 1  # Number of pod replicas
 
 image:
   repository: ghcr.io/blnk2007/context7-mcp  # Private GHCR registry for this repo
-  tag: "{{ .Values.context7McpVersion }}"     # Always use the version variable
+  tag: ""     # Uses context7McpVersion by default if not set
   pullPolicy: IfNotPresent
 
 imagePullSecrets:

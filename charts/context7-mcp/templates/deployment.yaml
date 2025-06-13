@@ -21,17 +21,17 @@ spec:
     spec:
       containers:
         - name: context7-mcp
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ default .Values.context7McpVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 8080
+{{- if .Values.env }}
           env:
-            {{- if .Values.env }}
-            {{- range $key, $value := .Values.env }}
+{{- range $key, $value := .Values.env }}
             - name: {{ $key }}
               value: {{ $value | quote }}
-            {{- end }}
-            {{- end }}
+{{- end }}
+{{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
 {{- with .Values.nodeSelector }}
