@@ -1,0 +1,25 @@
+name: Publish Helm Repo
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-helm@v4
+        with:
+          version: v3.14.4
+      - run: |
+          mkdir -p repo
+          helm lint charts/context7-mcp
+          helm package charts/context7-mcp -d repo
+          helm repo index repo --url https://blnk2007.github.io/context7-mcp-charts
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_dir: ./repo
+          publish_branch: gh-pages
+          force_orphan: true
+          personal_token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,21 @@
+1. Context7 MCP has been deployed.
+
+2. To access the service from your LAN, use the following:
+
+   NodePort: {{ .Values.service.nodePort }}
+   Port:     {{ .Values.service.port }}
+
+   Example:
+     http://<NodeIP>:{{ .Values.service.nodePort }}
+
+3. To check the status of your deployment:
+
+   kubectl get pods -l app.kubernetes.io/name={{ include "context7-mcp.name" . }} -o wide
+
+4. To see service details:
+
+   kubectl get svc {{ include "context7-mcp.fullname" . }}
+
+5. To update configuration, edit values.yaml and run:
+
+   helm upgrade --install {{ .Release.Name }} . -f values.yaml

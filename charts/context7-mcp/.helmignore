@@ -1,0 +1,13 @@
+# Patterns to ignore when packaging and installing this chart
+*.tgz
+*.tar.gz
+*.zip
+.DS_Store
+.git/
+.gitignore
+.dockerignore
+dockerfile/
+README.md
+LICENSE
+node_modules/
+memory-bank/

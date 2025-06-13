@@ -1,0 +1,39 @@
+# Default values for context7-mcp Helm chart.
+# 
+# context7McpVersion: The version of @upstash/context7-mcp to deploy.
+# This version is used for the Docker image tag, Helm appVersion, and Dockerfile build.
+# Update this value to upgrade the MCP version everywhere.
+context7McpVersion: v0.9.1  # <-- Update to latest released version as needed
+
+replicaCount: 1  # Number of pod replicas
+
+image:
+  repository: ghcr.io/blnk2007/context7-mcp  # Private GHCR registry for this repo
+  tag: "{{ .Values.context7McpVersion }}"     # Always use the version variable
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: ghcr-cred  # Must match the secret created in your cluster
+
+service:
+  type: NodePort  # Service type (NodePort for LAN access)
+  port: 8080      # Service port
+  nodePort: 30080 # NodePort for external access
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
+
+env: {}
+  # Example:
+  # DEFAULT_MINIMUM_TOKENS: "6000"
+
+nodeSelector: {}   # Node selection constraints
+
+tolerations: []    # Tolerations for scheduling
+
+affinity: {}       # Affinity rules
