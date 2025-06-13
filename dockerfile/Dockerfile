@@ -3,7 +3,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Set the Context7 MCP version (should match values.yaml and Chart.yaml)
-ARG CTX7_MCP_VERSION=v0.9.1
+ARG CTX7_MCP_VERSION=1.0.13
 
 # Install the specified version globally
 RUN npm install -g @upstash/context7-mcp@${CTX7_MCP_VERSION}
