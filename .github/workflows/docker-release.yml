@@ -1,0 +1,43 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'dockerfile/**'
+      - 'charts/context7-mcp/values.yaml'
+      - '.github/workflows/docker-release.yml'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Extract MCP version from values.yaml
+        id: mcpver
+        run: |
+          ver=$(yq '.context7McpVersion' charts/context7-mcp/values.yaml)
+          echo "version=${ver}" >> $GITHUB_OUTPUT
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfile
+          file: ./dockerfile/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/blnk2007/context7-mcp:${{ steps.mcpver.outputs.version }}
+            ghcr.io/blnk2007/context7-mcp:latest
