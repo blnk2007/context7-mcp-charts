@@ -12,6 +12,7 @@ on:
       - 'dockerfile/**'
       - 'charts/context7-mcp/values.yaml'
       - '.github/workflows/docker-release.yml'
+  workflow_dispatch:
 
 jobs:
   docker:
@@ -42,6 +43,7 @@ jobs:
           context: ./dockerfile
           file: ./dockerfile/Dockerfile
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/blnk2007/context7-mcp:${{ steps.mcpver.outputs.version }}
             ghcr.io/blnk2007/context7-mcp:latest
