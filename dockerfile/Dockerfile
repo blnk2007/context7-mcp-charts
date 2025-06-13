@@ -12,4 +12,4 @@ RUN npm install -g @upstash/context7-mcp@${CTX7_MCP_VERSION}
 EXPOSE 8080
 
 # Default command to run the server
-CMD ["context7-mcp"]
+CMD ["context7-mcp", "serve", "--port", "8080"]

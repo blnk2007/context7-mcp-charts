@@ -28,6 +28,12 @@ resources:
     cpu: 200m
     memory: 256Mi
 
+command:
+  - context7-mcp
+  - serve
+  - --port
+  - "8080"
+
 env: {}
   # Example:
   # DEFAULT_MINIMUM_TOKENS: "6000"
