@@ -1,5 +1,9 @@
 name: Build and Push Docker Image
 
+permissions:
+  contents: read
+  packages: write
+
 on:
   push:
     branches:
@@ -24,7 +28,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.CR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract MCP version from values.yaml
         id: mcpver
