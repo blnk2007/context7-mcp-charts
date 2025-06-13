@@ -12,4 +12,4 @@ RUN npm install -g @upstash/context7-mcp@${CTX7_MCP_VERSION}
 EXPOSE 8080
 
 # Default command to run the server
-CMD ["sh","-c","set -e; context7-mcp serve --port 8080 < /dev/null & child=$!; trap \"kill $child\" TERM INT; while kill -0 $child 2>/dev/null; do sleep 5; done"]
+CMD ["context7-mcp"]

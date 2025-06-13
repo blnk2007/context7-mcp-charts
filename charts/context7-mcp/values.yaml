@@ -28,11 +28,9 @@ resources:
     cpu: 200m
     memory: 256Mi
 
-command:
-  - context7-mcp
-  - serve
-  - --port
-  - "8080"
+args:
+  - "--transport=http"
+  - "--port=8080"
 
 env: {}
   # Example:

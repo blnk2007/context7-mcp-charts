@@ -23,8 +23,8 @@ spec:
         - name: context7-mcp
           image: "{{ .Values.image.repository }}:{{ default .Values.context7McpVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-{{- toYaml .Values.command | nindent 12 }}
+          args:
+{{- toYaml .Values.args | nindent 12 }}
           ports:
             - containerPort: 8080
 {{- if .Values.env }}
