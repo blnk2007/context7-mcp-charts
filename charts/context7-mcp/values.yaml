@@ -28,10 +28,6 @@ resources:
     cpu: 200m
     memory: 256Mi
 
-args:
-  - "--transport=http"
-  - "--port=8080"
-
 env: {}
   # Example:
   # DEFAULT_MINIMUM_TOKENS: "6000"
