@@ -3,8 +3,7 @@
 # context7McpVersion: The version of @upstash/context7-mcp to deploy.
 # This version is used for the Docker image tag, Helm appVersion, and Dockerfile build.
 # Update this value to upgrade the MCP version everywhere.
-context7McpVersion: 1.0.13  # <-- Update to latest released version as needed
-
+context7McpVersion: 1.0.14  # <-- Update to latest released version as needed
 replicaCount: 1  # Number of pod replicas
 
 image:
