@@ -1,0 +1,25 @@
+apiVersion: v1
+entries:
+  context7-mcp:
+  - apiVersion: v2
+    appVersion: v0.9.1
+    created: "2025-06-15T21:17:49.335221826Z"
+    description: A Helm chart for deploying the Context7 MCP server
+    digest: 7bf1ebf0c64d3f07f6e2beb195410515060b78b611a108f585e1fc7562cbae59
+    home: https://github.com/upstash/context7
+    keywords:
+    - context7
+    - mcp
+    - ai
+    - upstash
+    maintainers:
+    - name: Upstash
+      url: https://upstash.com
+    name: context7-mcp
+    sources:
+    - https://github.com/upstash/context7
+    type: application
+    urls:
+    - https://blnk2007.github.io/context7-mcp-charts/context7-mcp-0.1.1.tgz
+    version: 0.1.1
+generated: "2025-06-15T21:17:49.334745677Z"
